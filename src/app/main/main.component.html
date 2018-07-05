@@ -21,19 +21,19 @@
                     <a href="#home" class="smoothScroll">首页</a>
                 </li>
                 <li>
-                    <a routerLink="photo">相册</a>
+                    <a routerLink=""></a>
                 </li>
                 <li>
-                    <a href="">书架</a>
+                    <a href=""></a>
                 </li>
                 <li>
-                    <a href="">H5游戏</a>
+                    <a href=""></a>
                 </li>
                 <li>
-                    <a routerLink="message">留言板</a>
+                    <a routerLink=""></a>
                 </li>
                 <li>
-                    <a href="">简历</a>
+                    <a href=""></a>
                 </li>
             </ul>
         </div>
@@ -45,36 +45,19 @@
         <div class=" col-md-12  col-sm-12 title">
             <div id="main">
                 <ul>
-                    <li (click)="toUrl('Q')" (mouseover)="keySound()">Q</li>
-                    <li (click)="toUrl('W')" (mouseover)="keySound()">W</li>
-                    <li (click)="toUrl('E')" (mouseover)="keySound()">E</li>
-                    <li (click)="toUrl('R')" (mouseover)="keySound()">R</li>
-                    <li (click)="toUrl('T')" (mouseover)="keySound()">T</li>
-                    <li (click)="toUrl('Y')" (mouseover)="keySound()">Y</li>
-                    <li (click)="toUrl('U')" (mouseover)="keySound()">U</li>
-                    <li (click)="toUrl('I')" (mouseover)="keySound()">I</li>
-                    <li (click)="toUrl('O')" (mouseover)="keySound()">O</li>
-                    <li (click)="toUrl('P')" (mouseover)="keySound()">P</li>
+                    <ng-container *ngFor="let item of addressArray index as i;">
+                        <li *ngIf="i <= 9" (click)="toUrl(item.name)" (mouseover)="keySound()">{{ item.name }}</li>
+                    </ng-container>
                 </ul>
                 <ul>
-                    <li (click)="toUrl('A')" (mouseover)="keySound()">A</li>
-                    <li (click)="toUrl('S')" (mouseover)="keySound()">S</li>
-                    <li (click)="toUrl('D')" (mouseover)="keySound()">D</li>
-                    <li (click)="toUrl('F')" (mouseover)="keySound()">F</li>
-                    <li (click)="toUrl('G')" (mouseover)="keySound()">G</li>
-                    <li (click)="toUrl('H')" (mouseover)="keySound()">H</li>
-                    <li (click)="toUrl('J')" (mouseover)="keySound()">J</li>
-                    <li (click)="toUrl('K')" (mouseover)="keySound()">K</li>
-                    <li (click)="toUrl('L')" (mouseover)="keySound()">L</li>
+                    <ng-container *ngFor="let item of addressArray index as i;">
+                        <li *ngIf="i > 9 && i <=18" (click)="toUrl(item.name)" (mouseover)="keySound()">{{ item.name }}</li>
+                    </ng-container>
                 </ul>
                 <ul>
-                    <li (click)="toUrl('Z')" (mouseover)="keySound()">Z</li>
-                    <li (click)="toUrl('X')" (mouseover)="keySound()">X</li>
-                    <li (click)="toUrl('C')" (mouseover)="keySound()">C</li>
-                    <li (click)="toUrl('V')" (mouseover)="keySound()">V</li>
-                    <li (click)="toUrl('B')" (mouseover)="keySound()">B</li>
-                    <li (click)="toUrl('N')" (mouseover)="keySound()">N</li>
-                    <li (click)="toUrl('M')" (mouseover)="keySound()">M</li>
+                    <ng-container *ngFor="let item of addressArray index as i;">
+                        <li *ngIf="i > 18" (click)="toUrl(item.name)" (mouseover)="keySound()">{{ item.name }}</li>
+                    </ng-container>
                 </ul>
             </div>
         </div>

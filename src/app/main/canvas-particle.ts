@@ -4,9 +4,9 @@ export class CanvasParticle {
     }
     canvasInit(canvasConfig) {
         canvasConfig = canvasConfig || {};
-        var _this = this;
-        var myApp = document.getElementsByTagName("app-root")[0];
-        var canvasObj = document.createElement("canvas");
+        let _this = this;
+        let myApp = document.getElementsByTagName("app-root")[0];
+        let canvasObj = document.createElement("canvas");
         let canvas = {
             element: canvasObj,
             points: [],
@@ -37,7 +37,7 @@ export class CanvasParticle {
             _this.canvasSize(canvas.element);
         };
         // body.onmousemove = function (e) {
-        // 	var event = e || window.event;
+        // 	let event = e || window.event;
         // 	canvas.mouse = {
         // 		x: event.clientX,
         // 		y: event.clientY
@@ -55,11 +55,11 @@ export class CanvasParticle {
         canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     }
     drawPoint(canvas) {
-        var context = canvas.context, point, dist;
+        let context = canvas.context, point, dist;
         context.clearRect(0, 0, canvas.element.width, canvas.element.height);
         context.beginPath();
         context.fillStyle = "rgb(" + canvas.config.color + ")";
-        for (var i = 0, len = canvas.config.count; i < len; i++) {
+        for (let i = 0, len = canvas.config.count; i < len; i++) {
             if (canvas.points.length != canvas.config.count) {
                 // 初始化所有点
                 point = {
@@ -80,7 +80,7 @@ export class CanvasParticle {
         context.closePath();
     }
     borderPoint(point, canvas) {
-        var p = point;
+        let p = point;
         if (point.x <= 0 || point.x >= canvas.element.width) {
             p.vx = -p.vx;
             p.x += p.vx;
@@ -101,12 +101,12 @@ export class CanvasParticle {
     }
     drawLine(context, canvas, mouse) {
         context = context || canvas.context;
-        var dist;
-        for (var i = 0, len = canvas.config.count; i < len; i++) {
+        let dist;
+        for (let i = 0, len = canvas.config.count; i < len; i++) {
             // 初始化最大连接数
             canvas.points[i].max_conn = 0;
             // point to point
-            for (var j = 0; j < len; j++) {
+            for (let j = 0; j < len; j++) {
                 if (i != j) {
                     dist = Math.round(canvas.points[i].x - canvas.points[j].x) * Math.round(canvas.points[i].x - canvas.points[j].x) +
                         Math.round(canvas.points[i].y - canvas.points[j].y) * Math.round(canvas.points[i].y - canvas.points[j].y);

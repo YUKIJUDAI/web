@@ -10,11 +10,18 @@ declare var $: any;
 
 export class MainComponent implements OnInit {
     address: object;
+    addressArray: Array<object> = [];
     constructor() {
         this.address = new web().address;
         window.onkeyup = (event) => {
             this.toUrl(String.fromCharCode(event.keyCode))
         }
+        Object.keys(this.address).forEach((item, i)=>{
+            this.addressArray.push({
+                name: item,
+                url: this.address[item]
+            })
+        });    
     }
     keySound() {
         var audio = document.getElementsByTagName('audio')[0];
