@@ -6,4 +6,4 @@ const routes: Routes = [
     { path: '', component: MainComponent },
 ];
 
-export default routes;
+export { routes };

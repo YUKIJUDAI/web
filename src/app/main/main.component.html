@@ -1,1 +1,94 @@
-hello world
+<section id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h1 class="wow bounceInDown rotate">Just</h1>
+                <h2 class="wow bounce">My Website</h2>
+                <a href="#nav" class="btn btn-default smoothScroll" style="position:relative;z-index:1000">GET START</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- navigation section -->
+<div class="navbar navbar-default navbar-static-top" role="navigation" id="nav">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">nav</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#home" class="smoothScroll">首页</a>
+                </li>
+                <li>
+                    <a routerLink="photo">相册</a>
+                </li>
+                <li>
+                    <a href="">书架</a>
+                </li>
+                <li>
+                    <a href="">H5游戏</a>
+                </li>
+                <li>
+                    <a routerLink="message">留言板</a>
+                </li>
+                <li>
+                    <a href="">简历</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- intro section -->
+<section id="intro">
+    <div class="row">
+        <div class=" col-md-12  col-sm-12 title">
+            <div id="main">
+                <ul>
+                    <li (click)="toUrl('Q')" (mouseover)="keySound()">Q</li>
+                    <li (click)="toUrl('W')" (mouseover)="keySound()">W</li>
+                    <li (click)="toUrl('E')" (mouseover)="keySound()">E</li>
+                    <li (click)="toUrl('R')" (mouseover)="keySound()">R</li>
+                    <li (click)="toUrl('T')" (mouseover)="keySound()">T</li>
+                    <li (click)="toUrl('Y')" (mouseover)="keySound()">Y</li>
+                    <li (click)="toUrl('U')" (mouseover)="keySound()">U</li>
+                    <li (click)="toUrl('I')" (mouseover)="keySound()">I</li>
+                    <li (click)="toUrl('O')" (mouseover)="keySound()">O</li>
+                    <li (click)="toUrl('P')" (mouseover)="keySound()">P</li>
+                </ul>
+                <ul>
+                    <li (click)="toUrl('A')" (mouseover)="keySound()">A</li>
+                    <li (click)="toUrl('S')" (mouseover)="keySound()">S</li>
+                    <li (click)="toUrl('D')" (mouseover)="keySound()">D</li>
+                    <li (click)="toUrl('F')" (mouseover)="keySound()">F</li>
+                    <li (click)="toUrl('G')" (mouseover)="keySound()">G</li>
+                    <li (click)="toUrl('H')" (mouseover)="keySound()">H</li>
+                    <li (click)="toUrl('J')" (mouseover)="keySound()">J</li>
+                    <li (click)="toUrl('K')" (mouseover)="keySound()">K</li>
+                    <li (click)="toUrl('L')" (mouseover)="keySound()">L</li>
+                </ul>
+                <ul>
+                    <li (click)="toUrl('Z')" (mouseover)="keySound()">Z</li>
+                    <li (click)="toUrl('X')" (mouseover)="keySound()">X</li>
+                    <li (click)="toUrl('C')" (mouseover)="keySound()">C</li>
+                    <li (click)="toUrl('V')" (mouseover)="keySound()">V</li>
+                    <li (click)="toUrl('B')" (mouseover)="keySound()">B</li>
+                    <li (click)="toUrl('N')" (mouseover)="keySound()">N</li>
+                    <li (click)="toUrl('M')" (mouseover)="keySound()">M</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- footer section -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=724545855&auto=1&height=90"></iframe>-->
+            </div>
+        </div>
+    </div>
+</footer>
+
+<audio src="./assets/sound/key.wav" id="audio"></audio>

@@ -1,0 +1,72 @@
+body {
+	background: #f8f8f8;
+	color: #606060;
+	font-family: 'Proxima', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	position: relative;
+}
+
+html,
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+	text-align: center;
+	vertical-align: middle;
+}
+
+@font-face {
+	font-family: 'Proxima';
+	src: url(../fonts/ProximaNova-Regular.otf);
+}
+
+@font-face {
+	font-family: 'Proxima Bold';
+	src: url(../fonts/ProximaNova-Bold.otf);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Proxima Bold";
+	font-weight: bold;
+}
+
+p {
+	letter-spacing: 1px;
+	line-height: 28px;
+}
+
+hr {
+	border-color: #e0e0e0;
+	margin: 0 auto 20px auto;
+	width: 100px !important;
+}
+
+h1 {
+	font-size: 60px;
+}
+
+h2 {
+	font-size: 48px;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+h4 {
+	font-size: 24px;
+}
+
+h5 {
+	font-size: 18px;
+}
+
+h6 {
+	font-size: 16px;
+}
