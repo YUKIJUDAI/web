@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+
+import { wow } from './wow';
 import { CanvasParticle } from './canvas-particle';
 import { web } from './webData';
 
 declare var $: any;
 @Component({
     selector: 'app-root',
-    templateUrl: './main.component.html'
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.css']
 })
-
 export class MainComponent implements OnInit {
     address: object;
     addressArray: Array<object> = [];
     constructor() {
         this.address = new web().address;
-        window.onkeyup = (event) => {
-            this.toUrl(String.fromCharCode(event.keyCode))
-        }
-        Object.keys(this.address).forEach((item, i)=>{
+        Object.keys(this.address).forEach((item, i) => {
             this.addressArray.push({
                 name: item,
                 url: this.address[item]
             })
-        });    
+        });
     }
     keySound() {
         var audio = document.getElementsByTagName('audio')[0];
@@ -41,5 +40,6 @@ export class MainComponent implements OnInit {
         $(".navbar-default").sticky({
             topSpacing: 0
         });
+        new wow({}).init();
     }
 }
