@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import {smoothScroll} from 'smoothscroll';
+import { smoothScroll } from 'smoothscroll';
 
 import { wow } from './wow';
 import { CanvasParticle } from './canvas-particle';
@@ -25,6 +25,12 @@ export class MainComponent implements OnInit {
             })
         });
     }
+    ngOnInit() {
+        new CanvasParticle();
+        $('#home').parallax("100%", 0.3);
+        $(".navbar-default").sticky({ topSpacing: 0 });
+        new wow({}).init();
+    }
     keySound() {
         var audio = document.getElementsByTagName('audio')[0];
         audio.play();
@@ -38,13 +44,5 @@ export class MainComponent implements OnInit {
     toStart(e) {
         e.preventDefault();
         smoothScroll(this.intro.nativeElement);
-    }
-    ngOnInit() {
-        new CanvasParticle();
-        $('#home').parallax("100%", 0.3);
-        $(".navbar-default").sticky({
-            topSpacing: 0
-        });
-        new wow({}).init();
     }
 }
