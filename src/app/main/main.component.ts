@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {smoothScroll} from 'smoothscroll';
 
 import { wow } from './wow';
 import { CanvasParticle } from './canvas-particle';
@@ -13,6 +14,8 @@ declare var $: any;
 export class MainComponent implements OnInit {
     address: object;
     addressArray: Array<object> = [];
+    @ViewChild('intro')
+    intro: ElementRef;
     constructor() {
         this.address = new web().address;
         Object.keys(this.address).forEach((item, i) => {
@@ -32,11 +35,13 @@ export class MainComponent implements OnInit {
             window.open(this.address[id]);
         }
     }
-
+    toStart(e) {
+        e.preventDefault();
+        smoothScroll(this.intro.nativeElement);
+    }
     ngOnInit() {
         new CanvasParticle();
         $('#home').parallax("100%", 0.3);
-        $.localScroll({ filter: '.smoothScroll' });
         $(".navbar-default").sticky({
             topSpacing: 0
         });

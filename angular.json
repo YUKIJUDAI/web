@@ -28,8 +28,7 @@
             "scripts": [
               "src/assets/plugs/jquery.js",
               "src/assets/plugs/jquery.parallax.js",
-              "src/assets/plugs/jquery.sticky.js",
-              "src/assets/plugs/smoothscroll.js"
+              "src/assets/plugs/jquery.sticky.js"
             ]
           },
           "configurations": {
