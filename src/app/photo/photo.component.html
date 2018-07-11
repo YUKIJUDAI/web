@@ -1,0 +1,14 @@
+<div id="photoBg"></div>
+<div id="pp_gallery" class="pp_gallery">
+    <div id="pp_thumbContainer">
+        <div class="album" *ngFor="let photoList of photoData;">
+            <div class="content" *ngFor="let data of photoList.data">
+                <img src="{{data.url}}" />
+            </div>
+            <div class="descr">
+                {{photoList.title}}
+            </div>
+        </div>
+        <div id="pp_back" class="pp_back"></div>
+    </div>
+</div>

@@ -4,11 +4,15 @@ import { RouterModule } from '@angular/router';
 
 import { routes } from './router/router';
 
+import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
+import { PhotoComponent } from './photo/photo.component';
 
 @NgModule({
   declarations: [
-    MainComponent
+    AppComponent,
+    MainComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +22,6 @@ import { MainComponent } from './main/main.component';
     RouterModule
   ],
   providers: [],
-  bootstrap: [MainComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
