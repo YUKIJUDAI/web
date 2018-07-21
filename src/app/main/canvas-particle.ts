@@ -23,17 +23,17 @@ export class CanvasParticle {
                 e_dist: canvasConfig.e_dist || 20000,
                 max_conn: 10
             },
-            context: null,
+            context: null
         };
         // 获取context
         canvas.context = canvas.element.getContext("2d");
         myApp.appendChild(canvas.element);
-        canvas.element.style.position = 'absolute';
-        canvas.element.style.top = '0';
-        canvas.element.style.left = '0';
-        canvas.element.style.zIndex = '100';
+        canvas.element.style.position = "absolute";
+        canvas.element.style.top = "0";
+        canvas.element.style.left = "0";
+        canvas.element.style.zIndex = "100";
         this.canvasSize(canvas.element);
-        window.onresize = function () {
+        window.onresize = function() {
             _this.canvasSize(canvas.element);
         };
         // body.onmousemove = function (e) {
@@ -46,7 +46,7 @@ export class CanvasParticle {
         // document.onmouseleave = function () {
         // 	canvas.mouse = undefined;
         // }
-        setInterval(function () {
+        setInterval(function() {
             _this.drawPoint(canvas);
         }, 40);
     }
@@ -55,7 +55,9 @@ export class CanvasParticle {
         canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     }
     drawPoint(canvas) {
-        let context = canvas.context, point, dist;
+        let context = canvas.context,
+            point,
+            dist;
         context.clearRect(0, 0, canvas.element.width, canvas.element.height);
         context.beginPath();
         context.fillStyle = "rgb(" + canvas.config.color + ")";
@@ -68,8 +70,7 @@ export class CanvasParticle {
                     vx: canvas.config.vx / 2 - Math.random() * canvas.config.vx,
                     vy: canvas.config.vy / 2 - Math.random() * canvas.config.vy
                 };
-            }
-            else {
+            } else {
                 // 处理球的速度和位置，并且做边界处理
                 point = this.borderPoint(canvas.points[i], canvas);
             }
@@ -84,12 +85,10 @@ export class CanvasParticle {
         if (point.x <= 0 || point.x >= canvas.element.width) {
             p.vx = -p.vx;
             p.x += p.vx;
-        }
-        else if (point.y <= 0 || point.y >= canvas.element.height) {
+        } else if (point.y <= 0 || point.y >= canvas.element.height) {
             p.vy = -p.vy;
             p.y += p.vy;
-        }
-        else {
+        } else {
             p = {
                 x: p.x + p.vx,
                 y: p.y + p.vy,
@@ -108,7 +107,8 @@ export class CanvasParticle {
             // point to point
             for (let j = 0; j < len; j++) {
                 if (i != j) {
-                    dist = Math.round(canvas.points[i].x - canvas.points[j].x) * Math.round(canvas.points[i].x - canvas.points[j].x) +
+                    dist =
+                        Math.round(canvas.points[i].x - canvas.points[j].x) * Math.round(canvas.points[i].x - canvas.points[j].x) +
                         Math.round(canvas.points[i].y - canvas.points[j].y) * Math.round(canvas.points[i].y - canvas.points[j].y);
                     // 两点距离小于吸附距离，而且小于最大连接数，则画线
                     if (dist <= canvas.config.dist && canvas.points[i].max_conn < canvas.config.max_conn) {
@@ -126,7 +126,8 @@ export class CanvasParticle {
             // 如果鼠标进入画布
             // point to mouse
             if (mouse) {
-                dist = Math.round(canvas.points[i].x - mouse.x) * Math.round(canvas.points[i].x - mouse.x) +
+                dist =
+                    Math.round(canvas.points[i].x - mouse.x) * Math.round(canvas.points[i].x - mouse.x) +
                     Math.round(canvas.points[i].y - mouse.y) * Math.round(canvas.points[i].y - mouse.y);
                 // 遇到鼠标吸附距离时加速，直接改变point的x，y值达到加速效果
                 if (dist > canvas.config.dist && dist <= canvas.config.e_dist) {
@@ -144,5 +145,4 @@ export class CanvasParticle {
             }
         }
     }
-
 }

@@ -1,4 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./assets/css/bootstrap.min.css";
-@import "./assets/css/animate.css";
-@import "./assets/css/reset.css";
+body {
+    margin: 0;
+	background: #f8f8f8;
+	color: #606060;
+	font-family: 'Proxima', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	position: relative;
+}
+
+html,
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+	text-align: center;
+	vertical-align: middle;
+}
