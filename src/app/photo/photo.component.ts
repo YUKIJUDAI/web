@@ -6,11 +6,115 @@ import { Component, AfterViewInit } from "@angular/core";
     styleUrls: ["./phote.component.css"]
 })
 export class PhotoComponent implements AfterViewInit {
-    constructor() {}
+    picAssets: Array<object>;
+    constructor() {
+        var _this = this;
+        this.picAssets = [
+            {
+                url: "assets/images/photo/1.jpg",
+                h3txt: "Memo",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Beast",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")
+            },
+            {
+                url: "assets/images/photo/2.jpg",
+                h3txt: "Gun",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Rain",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")               
+            },
+            {
+                url: "assets/images/photo/3.jpg",
+                h3txt: "West",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Green",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")               
+            },
+            {
+                url: "assets/images/photo/4.jpg",
+                h3txt: "Catch",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Fire",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")                 
+            },
+            {
+                url: "assets/images/photo/5.jpg",
+                h3txt: "Lim",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Breed",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")                 
+            },
+            {
+                url: "assets/images/photo/6.jpg",
+                h3txt: "Hard",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Fast",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")                 
+            },
+            {
+                url: "assets/images/photo/7.jpg",
+                h3txt: "Red",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Lift",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")                 
+            },
+            {
+                url: "assets/images/photo/8.jpg",
+                h3txt: "Bust",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Jack",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")                 
+            },
+            {
+                url: "assets/images/photo/9.jpg",
+                h3txt: "Wild",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Zack",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")                 
+            },
+            {
+                url: "assets/images/photo/10.jpg",
+                h3txt: "Rost",
+                h3css: _this.randomCss("h3"),
+                h4txt: "List",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")                 
+            },
+            {
+                url: "assets/images/photo/11.jpg",
+                h3txt: "Grit",
+                h3css: _this.randomCss("h3"),
+                h4txt: "Mud",
+                h4css: _this.randomCss("h4"),
+                h4spancss: _this.randomCss("h4span")                 
+            }
+        ];
+    }
 
     ngAfterViewInit(): void {
         new Grid(document.querySelector(".grid"));
         window["imagesLoaded"](document.querySelectorAll(".box__img"));
+    }
+    randomCss(type: string): string | boolean {
+        var style: object = {
+            h3: ["box__title--bottom", "box__title--left"],
+            h4: ["box__text--bottom", "box__text--topcloser", "box__text--right", "box__text--bottomcloser"],
+            h4span: ["box__text-inner--rotated1", "box__text-inner--rotated2", "box__text-inner--rotated3"]
+        };
+        if (!style[type]) {
+            return false;
+        }
+        return style[type][Math.round(Math.random() * style[type].length)];
     }
 }
 let allowTilt = true;

@@ -32,285 +32,39 @@
                         </h4>
                     </div>
                 </a>
-                <a class="grid__item" href="#preview-1">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/1.jpg" />
-                        <h3 class="box__title">
-                            <span class="box__title-inner">Memo</span>
-                        </h3>
-                        <h4 class="box__text">
-                            <span class="box__text-inner">Beast</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-2">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/2.jpg" />
-                        <h3 class="box__title box__title--bottom">
-                            <span class="box__title-inner">Gun</span>
-                        </h3>
-                        <h4 class="box__text box__text--bottom">
-                            <span class="box__text-inner box__text-inner--rotated1">Rain</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-3">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/3.jpg" />
-                        <h3 class="box__title">
-                            <span class="box__title-inner">West</span>
-                        </h3>
-                        <h4 class="box__text box__text--topcloser">
-                            <span class="box__text-inner">Green</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-4">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/5.jpg" />
-                        <h3 class="box__title">
-                            <span class="box__title-inner" data-hover="Catch">Catch</span>
-                        </h3>
-                        <h4 class="box__text box__text--bottom box__text--right">
-                            <span class="box__text-inner box__text-inner--rotated3">Fire</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-5">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/6.jpg" />
-                        <h3 class="box__title">
-                            <span class="box__title-inner">Lim</span>
-                        </h3>
-                        <h4 class="box__text box__text--bottomcloser">
-                            <span class="box__text-inner">Breed</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-6">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/7.jpg" />
-                        <h3 class="box__title">
-                            <span class="box__title-inner">Hard</span>
-                        </h3>
-                        <h4 class="box__text">
-                            <span class="box__text-inner">Fast</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-7">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/8.jpg" />
-                        <h3 class="box__title box__title--bottom">
-                            <span class="box__title-inner">Red</span>
-                        </h3>
-                        <h4 class="box__text box__title--bottom">
-                            <span class="box__text-inner box__text-inner--rotated1">Life</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-8">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/4.jpg" />
-                        <h3 class="box__title">
-                            <span class="box__title-inner">Jack</span>
-                        </h3>
-                        <h4 class="box__text box__text--bottom">
-                            <span class="box__text-inner">Bust</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-9">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/10.jpg" alt="Some image" />
-                        <h3 class="box__title">
-                            <span class="box__title-inner">Wild</span>
-                        </h3>
-                        <h4 class="box__text box__text--bottom">
-                            <span class="box__text-inner">Zack</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-10">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/11.jpg" />
-                        <h3 class="box__title box__title--bottom">
-                            <span class="box__title-inner">Lost</span>
-                        </h3>
-                        <h4 class="box__text">
-                            <span class="box__text-inner box__text-inner--rotated2">Rust</span>
-                        </h4>
-                    </div>
-                </a>
-                <a class="grid__item" href="#preview-11">
-                    <div class="box">
-                        <div class="box__shadow"></div>
-                        <img class="box__img" src="assets/images/photo/12.jpg" />
-                        <h3 class="box__title box__title--left">
-                            <span class="box__title-inner" data-hover="Grit">Grit</span>
-                        </h3>
-                        <h4 class="box__text box__text--bottom box__text--right">
-                            <span class="box__text-inner box__text-inner--rotated3">Mud</span>
-                        </h4>
-                    </div>
-                </a>
+                <ng-template ngFor let-item [ngForOf]="picAssets" let-i="index">
+                    <a class="grid__item" href="#preview-{{i}}">
+                        <div class="box">
+                            <div class="box__shadow"></div>
+                            <img class="box__img" src="{{item.url}}" />
+                            <h3 class="box__title" [ngClass]="item.h3css">
+                                <span class="box__title-inner">{{ item.h3txt }}</span>
+                            </h3>
+                            <h4 class="box__text" [ngClass]="item.h4css">
+                                <span class="box__text-inner" [ngClass]="item.h4css">{{item.h4txt}}</span>
+                            </h4>
+                        </div>
+                    </a>
+                </ng-template>
             </div>
         </div>
         <div class="overlay">
             <div class="overlay__reveal"></div>
-            <div class="overlay__item" id="preview-1">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/1.jpg" alt="Some image" />
-                    <h3 class="box__title">
-                        <span class="box__title-inner">Memo</span>
-                    </h3>
-                    <h4 class="box__text">
-                        <span class="box__text-inner">Beast</span>
-                    </h4>
+            <ng-template ngFor let-item [ngForOf]="picAssets" let-i="index">
+                <div class="overlay__item" id="preview-{{i}}">
+                    <div class="box">
+                        <div class="box__shadow"></div>
+                        <img class="box__img" src="{{item.url}}" />
+                        <h3 class="box__title" [ngClass]="item.h3css">
+                            <span class="box__title-inner">{{ item.h3txt }}</span>
+                        </h3>
+                        <h4 class="box__text" [ngClass]="item.h4css">
+                            <span class="box__text-inner" [ngClass]="item.h4css">{{item.h4txt}}</span>
+                        </h4>
+                    </div>
+                    <p class="overlay__content">To have a dream, Even if far way.</p>
                 </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-2">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/2.jpg" alt="Some image" />
-                    <h3 class="box__title box__title--bottom">
-                        <span class="box__title-inner">Gun</span>
-                    </h3>
-                    <h4 class="box__text box__text--bottom">
-                        <span class="box__text-inner box__text-inner--rotated1">Rain</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-3">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/3.jpg" alt="Some image" />
-                    <h3 class="box__title">
-                        <span class="box__title-inner">West</span>
-                    </h3>
-                    <h4 class="box__text box__text--topcloser">
-                        <span class="box__text-inner">Green</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-4">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/5.jpg" alt="Some image" />
-                    <h3 class="box__title">
-                        <span class="box__title-inner">Catch</span>
-                    </h3>
-                    <h4 class="box__text box__text--bottom box__text--right">
-                        <span class="box__text-inner box__text-inner--rotated3">Fire</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-5">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/6.jpg" alt="Some image" />
-                    <h3 class="box__title">
-                        <span class="box__title-inner">Lim</span>
-                    </h3>
-                    <h4 class="box__text box__text--bottomcloser">
-                        <span class="box__text-inner">Breed</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-6">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/7.jpg" alt="Some image" />
-                    <h3 class="box__title">
-                        <span class="box__title-inner">Hard</span>
-                    </h3>
-                    <h4 class="box__text">
-                        <span class="box__text-inner">Fast</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-7">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/8.jpg" alt="Some image" />
-                    <h3 class="box__title box__title--bottom">
-                        <span class="box__title-inner">Red</span>
-                    </h3>
-                    <h4 class="box__text box__title--bottom">
-                        <span class="box__text-inner box__text-inner--rotated1">Life</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-8">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/9.jpg" alt="Some image" />
-                    <h3 class="box__title">
-                        <span class="box__title-inner">Jack</span>
-                    </h3>
-                    <h4 class="box__text box__text--bottom">
-                        <span class="box__text-inner">Bust</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-9">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/10.jpg" alt="Some image" />
-                    <h3 class="box__title">
-                        <span class="box__title-inner">Wild</span>
-                    </h3>
-                    <h4 class="box__text box__text--bottom">
-                        <span class="box__text-inner">Zack</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-10">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/11.jpg" alt="Some image" />
-                    <h3 class="box__title box__title--bottom">
-                        <span class="box__title-inner">Lost</span>
-                    </h3>
-                    <h4 class="box__text">
-                        <span class="box__text-inner box__text-inner--rotated2">Rust</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
-            <div class="overlay__item" id="preview-11">
-                <div class="box">
-                    <div class="box__shadow"></div>
-                    <img class="box__img box__img--original" src="assets/images/photo/original/12.jpg" alt="Some image" />
-                    <h3 class="box__title box__title--left">
-                        <span class="box__title-inner">Grit</span>
-                    </h3>
-                    <h4 class="box__text box__text--bottom box__text--right">
-                        <span class="box__text-inner box__text-inner--rotated3">Mud</span>
-                    </h4>
-                </div>
-                <p class="overlay__content">It's time the tale were told of how you took a child and you made him old.</p>
-            </div>
+            </ng-template>
             <button class="overlay__close">
                 <svg class="icon icon--cross">
                     <use xlink:href="#icon-cross"></use>
