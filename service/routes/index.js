@@ -8,11 +8,13 @@ var router = express.Router();
 /* GET home page. */
 router.get("/", function(req, res, next) {
     res.write("hello world");
-    log.info('hello world')
+    log.info("hello world");
 });
 
-router.get("/photo1", function(req, res, next) {
-    res.write("hello world1111");
+router.get("/getPhotoList", function(req, res, next) {
+    db.query("SELECT * FROM web_photoList", function(err, data) {
+        res.json(data);
+    });
 });
 
 module.exports = router;

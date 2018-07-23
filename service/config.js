@@ -4,9 +4,9 @@ var yargs = require("yargs");
 var env = yargs.env;
 
 var mysqlConfig = {
-    host: "localhost",
+    host: "127.0.0.1",
     user: "root",
-    password: "",
+    password: "000000",
     database: "web",
     port: 3306
 };

@@ -1,8 +1,8 @@
 var mysql = require("mysql");
-var mysqlConfig = require("./config");
+var config = require("./config");
 
 // 使用连接池，避免开太多的线程，提升性能
-var pool = mysql.createPool(mysqlConfig);
+var pool = mysql.createPool(config.mysqlConfig);
 
 /**
  * 对query执行的结果自定义返回JSON结果

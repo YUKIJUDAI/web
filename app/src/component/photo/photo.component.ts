@@ -1,4 +1,6 @@
 import { Component, AfterViewInit } from "@angular/core";
+import { Http, Response, ResponseOptions, Headers } from "@angular/http";
+import { environment } from "../../environments/environment";
 
 @Component({
     selector: "photo",
@@ -7,98 +9,15 @@ import { Component, AfterViewInit } from "@angular/core";
 })
 export class PhotoComponent implements AfterViewInit {
     picAssets: Array<object>;
-    constructor() {
-        var _this = this;
-        this.picAssets = [
-            {
-                url: "assets/images/photo/1.jpg",
-                h3txt: "Memo",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Beast",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")
-            },
-            {
-                url: "assets/images/photo/2.jpg",
-                h3txt: "Gun",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Rain",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")               
-            },
-            {
-                url: "assets/images/photo/3.jpg",
-                h3txt: "West",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Green",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")               
-            },
-            {
-                url: "assets/images/photo/4.jpg",
-                h3txt: "Catch",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Fire",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")                 
-            },
-            {
-                url: "assets/images/photo/5.jpg",
-                h3txt: "Lim",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Breed",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")                 
-            },
-            {
-                url: "assets/images/photo/6.jpg",
-                h3txt: "Hard",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Fast",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")                 
-            },
-            {
-                url: "assets/images/photo/7.jpg",
-                h3txt: "Red",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Lift",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")                 
-            },
-            {
-                url: "assets/images/photo/8.jpg",
-                h3txt: "Bust",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Jack",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")                 
-            },
-            {
-                url: "assets/images/photo/9.jpg",
-                h3txt: "Wild",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Zack",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")                 
-            },
-            {
-                url: "assets/images/photo/10.jpg",
-                h3txt: "Rost",
-                h3css: _this.randomCss("h3"),
-                h4txt: "List",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")                 
-            },
-            {
-                url: "assets/images/photo/11.jpg",
-                h3txt: "Grit",
-                h3css: _this.randomCss("h3"),
-                h4txt: "Mud",
-                h4css: _this.randomCss("h4"),
-                h4spancss: _this.randomCss("h4span")                 
-            }
-        ];
+    constructor(private http: Http) {
+        this.http.request(environment.baseApi + "getPhotoList").subscribe((res: Response) => {
+            this.picAssets = res.json();
+            this.picAssets.forEach((item, i) => {
+                item["h3css"] = this.randomCss("h3");
+                item["h4css"] = this.randomCss("h4");
+                item["h4spancss"] = this.randomCss("h4span");
+            });
+        });
     }
 
     ngAfterViewInit(): void {
