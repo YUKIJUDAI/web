@@ -1,5 +1,7 @@
-import { Component, AfterViewInit } from "@angular/core";
-import { Http, Response, ResponseOptions, Headers } from "@angular/http";
+import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable, timer } from "rxjs";
+
 import { environment } from "../../environments/environment";
 
 @Component({
@@ -7,23 +9,23 @@ import { environment } from "../../environments/environment";
     templateUrl: "./photo.component.html",
     styleUrls: ["./phote.component.css"]
 })
-export class PhotoComponent implements AfterViewInit {
-    picAssets: Array<object>;
-    constructor(private http: Http) {
-        this.http.request(environment.baseApi + "getPhotoList").subscribe((res: Response) => {
-            this.picAssets = res.json();
+export class PhotoComponent {
+    picAssets: any;
+    constructor(private http: HttpClient) {
+        this.http.get(environment.baseApi + "getPhotoList").subscribe(res => {
+            this.picAssets = res;
             this.picAssets.forEach((item, i) => {
                 item["h3css"] = this.randomCss("h3");
                 item["h4css"] = this.randomCss("h4");
                 item["h4spancss"] = this.randomCss("h4span");
             });
+            timer(500).subscribe(() => {
+                new Grid(document.querySelector(".grid"));
+                window["imagesLoaded"](document.querySelectorAll(".box__img"));
+            });
         });
     }
 
-    ngAfterViewInit(): void {
-        new Grid(document.querySelector(".grid"));
-        window["imagesLoaded"](document.querySelectorAll(".box__img"));
-    }
     randomCss(type: string): string | boolean {
         var style: object = {
             h3: ["box__title--bottom", "box__title--left"],

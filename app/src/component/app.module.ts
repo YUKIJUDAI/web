@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 
 import { routes } from "./router/router";
 
@@ -11,7 +11,7 @@ import { PhotoComponent } from "./photo/photo.component";
 
 @NgModule({
     declarations: [AppComponent, MainComponent, PhotoComponent],
-    imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes)],
+    imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes)],
     exports: [RouterModule],
     providers: [],
     bootstrap: [AppComponent]
