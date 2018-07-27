@@ -15,7 +15,6 @@ export class PhotoComponent {
         this.http.get(environment.baseApi + "getPhotoList").subscribe(res => {
             this.picAssets = res;
             this.picAssets.forEach((item, i) => {
-                item["h3css"] = this.randomCss("h3");
                 item["h4css"] = this.randomCss("h4");
                 item["h4spancss"] = this.randomCss("h4span");
             });
@@ -48,7 +47,6 @@ const lineEq = (y2, y1, x2, x1, currentVal) => {
 };
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-const getRandomFloat = (min, max) => (Math.random() * (max - min) + min).toFixed(2);
 
 const setRange = obj => {
     for (let k in obj) {
