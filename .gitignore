@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 
+#music
+/app/src/assets/sound/music
+
 # log
 /service/logs
 

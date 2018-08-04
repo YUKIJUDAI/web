@@ -3,20 +3,21 @@ import { smoothScroll } from "smoothscroll";
 
 import { wow } from "./wow";
 import { CanvasParticle } from "./canvas-particle";
-import { web } from "./webData";
+import { webService } from "./webData";
 
 declare var $: any;
 @Component({
     selector: "app-root",
     templateUrl: "./main.component.html",
-    styleUrls: ["./main.component.css"]
+    styleUrls: ["./main.component.css"],
+    providers: [webService]
 })
 export class MainComponent implements OnInit {
     address: object;
     addressArray: Array<object> = [];
     @ViewChild("intro") intro: ElementRef;
-    constructor() {
-        this.address = new web().address;
+    constructor(private web: webService) {
+        this.address = this.web.address;
         Object.keys(this.address).forEach((item, i) => {
             this.addressArray.push({
                 name: item,

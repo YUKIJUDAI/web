@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, timer } from "rxjs";
+import { timer } from "rxjs";
 
 import { environment } from "../../environments/environment";
 
 @Component({
     selector: "photo",
     templateUrl: "./photo.component.html",
-    styleUrls: ["./phote.component.css"]
+    styleUrls: ["./phote.component.css","./cat.css"]
 })
 export class PhotoComponent {
     picAssets: any;

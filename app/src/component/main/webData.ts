@@ -1,4 +1,8 @@
-export class web {
+import { Injectable } from "@angular/core";
+
+@Injectable()
+export class webService {
+    constructor() {}
     address: object = {
         Q: "https://qzone.qq.com",
         W: "https://wx.qq.com",

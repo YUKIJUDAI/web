@@ -8,9 +8,10 @@ import { routes } from "./router/router";
 import { AppComponent } from "./app.component";
 import { MainComponent } from "./main/main.component";
 import { PhotoComponent } from "./photo/photo.component";
+import { MusicComponent } from "./music/music.component";
 
 @NgModule({
-    declarations: [AppComponent, MainComponent, PhotoComponent],
+    declarations: [AppComponent, MainComponent, PhotoComponent, MusicComponent],
     imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes)],
     exports: [RouterModule],
     providers: [],
