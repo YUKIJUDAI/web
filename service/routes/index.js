@@ -2,10 +2,11 @@ var path = require("path");
 var fs = require("fs");
 var express = require("express");
 var bodyParser = require("body-parser");
-var jsmediatags = require("jsmediatags");
+var jsmediatags = require("jsmediatags"); // mp3读取
 
-var log = require("../bin/log");
+
 var db = require("../bin/basicConnection");
+var { log, logInfo, logError } = require("../bin/log");
 
 var router = express.Router();
 
@@ -55,12 +56,11 @@ router.get("/getMusicList", function(req, res, next) {
             jsmediatags.read(p + "/" + item, {
                 onSuccess: function(tag) {
                     data.push({
-                        title: tag.tags.title,
+                        title: item,
                         artist: tag.tags.artist,
                         src: "../../assets/sound/music/" + item
                     });
                     if (i === files.length - 1) {
-                        console.log(data);
                         res.json(data);
                     }
                 }

@@ -6,12 +6,14 @@ var log4js = require("log4js"); //日志
 var ejs = require("ejs");
 
 var indexRouter = require("./routes/index");
-var log = require("./bin/log");
+var { log, logInfo, logError } = require("./bin/log");
 
 var app = express();
 
 //日志
-app.use(log4js.connectLogger(log, { level: "trace" }));
+app.use(log4js.connectLogger(log));
+app.use(log4js.connectLogger(logInfo));
+app.use(log4js.connectLogger(logError));
 
 // 静态文件
 app.use(express.static(path.join(__dirname, "views")));

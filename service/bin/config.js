@@ -14,55 +14,34 @@ var mysqlConfig = {
 var logConfig = {
     appenders: {
         console: {
-            type: "console"
-        },
-        trace: {
-            type: "file",
-            filename: "logs/access.log",
-            "maxLogSize ": 31457280
-        },
-        http: {
-            type: "logLevelFilter",
-            appender: "trace",
-            level: "trace",
-            maxLevel: "trace"
+            type: "console",
+            category: "console"
         },
         info: {
             type: "dateFile",
             filename: "logs/app-info.log",
             pattern: ".yyyy-MM-dd",
-            layout: {
-                type: "pattern",
-                pattern: "[%d{ISO8601}][%5p  %z  %c] %m"
-            },
-            compress: true
-        },
-        maxInfo: {
-            type: "logLevelFilter",
-            appender: "info",
-            level: "debug",
-            maxLevel: "info"
+            category: "console"
         },
         error: {
             type: "dateFile",
             filename: "logs/app-error.log",
-            pattern: ".yyyy-MM-dd",
-            layout: {
-                type: "pattern",
-                pattern: "[%d{ISO8601}][%5p  %z  %c] %m"
-            },
-            compress: true
-        },
-        minError: {
-            type: "logLevelFilter",
-            appender: "error",
-            level: "error"
+            pattern: ".yyyy-MM-dd"
         }
     },
+    replaceConsole: true,
     categories: {
         default: {
-            appenders: ["console", "http", "maxInfo", "minError"],
+            appenders: ["console"],
             level: "all"
+        },
+        info: {
+            appenders: ["info"],
+            level: "info"
+        },
+        error: {
+            appenders: ["error"],
+            level: "error"
         }
     }
 };

@@ -1,8 +1,10 @@
-var log4js = require("log4js"); 
+var log4js = require("log4js");
 var config = require("./config");
 
 log4js.configure(config.logConfig);
 
-var logger = log4js.getLogger("http");
+var log = log4js.getLogger();
+var logInfo = log4js.getLogger("info");
+var logError = log4js.getLogger("error");
 
-module.exports = logger;
+module.exports = { log, logInfo, logError };
