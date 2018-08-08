@@ -10,37 +10,50 @@ a:hover {
 ul li {
     list-style: none;
 }
+.music_left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 360px;
+}
+.music_center {
+    position: absolute;
+    left: 400px;
+    top: 0;
+    width: 550px;
+    height: 360px;
+}
+.music_bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 950px;
+    height: 300px;
+}
+.music_right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 710px;
+}
+
 .bz_music {
-    width: 700px;
-    height: 380px;
-    margin: 150px auto;
+    margin: 50px auto;
+    width: 1200px;
+    height: 660px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     background: #222;
     position: relative;
 }
 .bz_music .music_info {
-    width: 500px;
+    width: 400px;
     height: 150px;
     background: #000;
     border-radius: 10px 10px 0 0;
     position: relative;
-}
-.music_info .left_photo {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top: 15%;
-    left: 20px;
-    overflow: hidden;
-    transition: all 1s;
-}
-.music_info .left_photo img {
-    width: 100px;
-    height: 100px;
-    transform: rotate(0deg);
 }
 .music_info .right_btn {
     width: 30px;
@@ -50,27 +63,15 @@ ul li {
     top: 30%;
     right: 20px;
 }
-.music_info .right_btn .random {
-    display: block;
-    margin-bottom: 10px;
-}
-.music_info .right_btn .list {
-    display: block;
-    margin-bottom: 10px;
-    color: #ddd;
-}
-.music_info .right_btn .heart {
-    display: block;
-}
 .music_info .center_list {
-    width: 500px;
+    width: 400px;
     height: 150px;
     position: relative;
 }
 .music_info .center_list ul {
     position: absolute;
     top: 35%;
-    left: 50%;
+    left: 40%;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -104,7 +105,7 @@ ul li {
     background: #ed553b;
 }
 .bz_music .music_controls {
-    width: 500px;
+    width: 400px;
     height: 210px;
     color: #666;
     text-align: center;
@@ -120,7 +121,7 @@ ul li {
     padding: 10px 0;
 }
 .music_controls .play_controls [class^="btn_"] {
-    padding: 0 50px;
+    padding: 0 30px;
 }
 .music_controls .volume {
     width: 300px;
@@ -131,25 +132,9 @@ ul li {
     font-size: 20px;
     cursor: pointer;
 }
-.music_controls .volumeOff {
-    position: absolute;
-    top: 355px;
-    left: 80px;
-}
-.music_controls .volumeUp {
-    position: absolute;
-    top: 355px;
-    right: 270px;
-}
-.music_controls .volume .btn_slide {
-    width: 50%;
-    height: 2px;
-    display: block;
-    background: #ed553b;
-}
 .bz_music .play_list_area {
-    width: 200px;
-    height: 360px;
+    width: 250px;
+    height: 650px;
     border-radius: 10px;
     background: #222;
     position: absolute;

@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "build": "node ./service.js",
-        "start": "forever start ./service.js -w",
+        "start": "forever start -w ./service.js",
         "stop": "forever stopall",
         "reset": "forever restartall",
         "list": "forever list"

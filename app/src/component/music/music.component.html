@@ -1,45 +1,49 @@
 <div class="music">
     <audio id="player" src="{{music_list[play_index].src}}" #player></audio>
-
     <div id="bz_music" class="bz_music">
-        <div class="music_info">
-            <div class="left_photo">
-                <a href="javascript:;">
-                    <img id="left_photo" src="">
-                </a>
+        <div class="music_left">
+            <div class="music_info">
+                <div class="center_list">
+                    <ul>
+                        <li class="list_current">
+                            <a href="javascript:;">
+                                <span id="list_title" class="list_title">{{music_list[play_index].title}}</span>
+                            </a>
+                            <a href="javascript:;">
+                                <span id="list_singer" class="list_singer">{{music_list[play_index].artist}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="process" class="process" (click)="toProcess($event)" #process>
+                    <span id="process_slide" class="process_slide" style="width: 0%;" #processSlide></span>
+                </div>
             </div>
-            <div class="center_list">
-                <ul>
-                    <li class="list_current">
-                        <a href="javascript:;">
-                            <span id="list_title" class="list_title">{{music_list[play_index].title}}</span>
-                        </a>
-                        <a href="javascript:;">
-                            <span id="list_singer" class="list_singer">{{music_list[play_index].artist}}</span>
-                        </a>
+            <div class="music_controls">
+                <div id="time" class="time">{{time}}</div>
+                <div class="play_controls">
+                    <a id="btnBackward" class="btn_back fa fa-backward" (click)="backword()"></a>
+                    <a id="btnPlay" class="btn_play fa" [ngClass]="{'fa-play':flag,'fa-pause':!flag}" (click)="clickBtnPlay()"></a>
+                    <a id="btnForward" class="btn_forward fa fa-forward" (click)="forward()"></a>
+                </div>
+            </div>
+        </div>
+        <div class="music_center">
+
+        </div>
+        <div class="music_right">
+            <div id="play_list_area" class="play_list_area">
+                <ul id="play_list" class="play_list">
+                    <li *ngFor="let item of music_list;let i = index">
+                        <div style="height:100%" (click)="playMusic(i)">
+                            <span class="list_title">{{ item.title }}</span>
+                        </div>
                     </li>
                 </ul>
             </div>
-            <div id="process" class="process" (click)="process($event)">
-                <span id="process_slide" class="process_slide" style="width: 0%;" #processSlide></span>
-            </div>
         </div>
-        <div class="music_controls">
-            <div id="time" class="time">{{time}}</div>
-            <div class="play_controls">
-                <a id="btnBackward" class="btn_back fa fa-backward" (click)="backword()"></a>
-                <a id="btnPlay" class="btn_play fa" [ngClass]="{'fa-play':flag,'fa-pause':!flag}" (click)="clickBtnPlay()"></a>
-                <a id="btnForward" class="btn_forward fa fa-forward" (click)="forward()"></a>
-            </div>
-        </div>
-        <div id="play_list_area" class="play_list_area">
-            <ul id="play_list" class="play_list">
-                <li *ngFor="let item of music_list;let i = index">
-                    <div style="height:100%" (click)="playMusic(i)">
-                        <span class="list_title">{{ item.title }}</span>
-                    </div>
-                </li>
-            </ul>
+        <div class="music_bottom">
+            <canvas id="canvas" width="800" height="250"></canvas>
         </div>
     </div>
 </div>

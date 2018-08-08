@@ -56,7 +56,7 @@ router.get("/getMusicList", function(req, res, next) {
             jsmediatags.read(p + "/" + item, {
                 onSuccess: function(tag) {
                     data.push({
-                        title: item,
+                        title: item.split(".")[0],
                         artist: tag.tags.artist,
                         src: "../../assets/sound/music/" + item
                     });

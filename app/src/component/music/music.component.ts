@@ -1,43 +1,46 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { interval } from "rxjs";
+import { interval, timer } from "rxjs/index";
 
 import { environment } from "../../environments/environment";
+import { Visualizer } from "./audio_visualizer";
 
 @Component({
     selector: "music",
     templateUrl: "./music.component.html",
-    styleUrls: ["./music.component.css"]
+    styleUrls: ["./music.component.css"],
+    providers: [Visualizer]
 })
 export class MusicComponent {
     @ViewChild("player") player: ElementRef;
+    @ViewChild("process") process: ElementRef;
     @ViewChild("processSlide") process_slide: ElementRef;
 
-    music_list: any;
+    music_list: any = [{ src: "" }];
     play_index: number = 0;
     time: string = "00:00";
     flag: boolean = false;
     setInterval: any;
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private visualizer: Visualizer) {
         this.http.get(environment.baseApi + "getMusicList").subscribe(res => {
             this.music_list = res;
-        });
-    }
-    interval() {
-        var interval = interval(100).subscribe(() => {
-            this.time = this.formateTime(this.player.nativeElement.currentTime);
-            var percent = this.player.nativeElement.currentTime / this.player.nativeElement.duration;
-            this.process_slide.nativeElement.style.width = percent * 100 + "%";
         });
     }
     playMusic(i) {
         this.play_index = i;
         this.flag = true;
-        this.player.nativeElement.play();
+        this.visualizer.ini();
+        timer(100).subscribe(() => {
+            this.player.nativeElement.play();
+        });
         this.setInterval = interval(100).subscribe(() => {
             this.time = this.formateTime(this.player.nativeElement.currentTime);
             var percent = this.player.nativeElement.currentTime / this.player.nativeElement.duration;
             this.process_slide.nativeElement.style.width = percent * 100 + "%";
+            if (this.player.nativeElement.ended) {
+                this.setInterval.unsubscribe();
+                this.forward();
+            }
         });
     }
     clickBtnPlay() {
@@ -62,8 +65,8 @@ export class MusicComponent {
         second = second >= 10 ? second : "0" + second;
         return minute + ":" + second;
     }
-    process(event) {
-        var currentValue = event.offsetX / this.player.nativeElement.offsetWidth;
+    toProcess(event) {
+        var currentValue = event.offsetX / this.process.nativeElement.offsetWidth;
         this.player.nativeElement.currentTime = this.player.nativeElement.duration * currentValue;
     }
 }
