@@ -15,14 +15,14 @@ ul li {
     left: 0;
     top: 0;
     width: 400px;
-    height: 360px;
+    height: 350px;
 }
 .music_center {
     position: absolute;
     left: 400px;
     top: 0;
     width: 550px;
-    height: 360px;
+    height: 350px;
 }
 .music_bottom {
     position: absolute;
@@ -36,13 +36,13 @@ ul li {
     top: 0;
     right: 0;
     width: 250px;
-    height: 710px;
+    height: 700px;
 }
 
 .bz_music {
     margin: 50px auto;
     width: 1200px;
-    height: 660px;
+    height: 650px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     background: #222;
@@ -71,7 +71,7 @@ ul li {
 .music_info .center_list ul {
     position: absolute;
     top: 35%;
-    left: 40%;
+    left: 45%;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -88,21 +88,6 @@ ul li {
     display: block;
     color: rgba(255, 255, 255, 0.4);
     text-align: center;
-}
-.music_info .process {
-    width: 100%;
-    height: 5px;
-    background: #000;
-    display: block;
-    position: absolute;
-    bottom: 0;
-    cursor: pointer;
-}
-.music_info .process .process_slide {
-    width: 0;
-    height: 5px;
-    display: block;
-    background: #ed553b;
 }
 .bz_music .music_controls {
     width: 400px;

@@ -13,8 +13,6 @@ import { Visualizer } from "./audio_visualizer";
 })
 export class MusicComponent {
     @ViewChild("player") player: ElementRef;
-    @ViewChild("process") process: ElementRef;
-    @ViewChild("processSlide") process_slide: ElementRef;
 
     music_list: any = [{ src: "" }];
     play_index: number = 0;
@@ -24,39 +22,48 @@ export class MusicComponent {
     constructor(private http: HttpClient, private visualizer: Visualizer) {
         this.http.get(environment.baseApi + "getMusicList").subscribe(res => {
             this.music_list = res;
+            this.playMusic(0);
         });
     }
     playMusic(i) {
         this.play_index = i;
         this.flag = true;
-        this.visualizer.ini();
-        timer(100).subscribe(() => {
-            this.player.nativeElement.play();
-        });
+        this.visualizer.start(this.music_list[i].src);
         this.setInterval = interval(100).subscribe(() => {
-            this.time = this.formateTime(this.player.nativeElement.currentTime);
-            var percent = this.player.nativeElement.currentTime / this.player.nativeElement.duration;
-            this.process_slide.nativeElement.style.width = percent * 100 + "%";
-            if (this.player.nativeElement.ended) {
+            this.time = this.formateTime(this.visualizer.getCurrentTime());
+            if (
+                this.visualizer.getCurrentTime() > 0 &&
+                this.visualizer.getDuration() > 0 &&
+                this.visualizer.getCurrentTime() >= this.visualizer.getDuration()
+            ) {
                 this.setInterval.unsubscribe();
                 this.forward();
             }
         });
     }
     clickBtnPlay() {
-        if (this.player.nativeElement.paused) {
-            this.playMusic(this.play_index);
-        } else {
+        if (this.flag) {
             this.flag = false;
-            this.player.nativeElement.pause();
-            this.setInterval.unsubscribe();
+            this.visualizer.stop();
+        } else {
+            this.visualizer.play(this.visualizer.getCurrentTime());
         }
     }
     backword() {
-        this.play_index > 0 ? this.playMusic(this.play_index - 1) : alert("没有上一首了");
+        if (this.play_index > 0) {
+            this.visualizer.stop();
+            this.playMusic(this.play_index - 1);
+        } else {
+            alert("没有上一首了");
+        }
     }
     forward() {
-        this.play_index < this.music_list.length - 1 ? this.playMusic(this.play_index + 1) : alert("没有下一首了");
+        if (this.play_index < this.music_list.length - 1) {
+            this.visualizer.stop();
+            this.playMusic(this.play_index + 1);
+        } else {
+            alert("没有下一首了");
+        }
     }
     formateTime(time) {
         var minute: string | number = Math.floor(time / 60);
@@ -64,9 +71,5 @@ export class MusicComponent {
         minute = minute >= 10 ? minute : "0" + minute;
         second = second >= 10 ? second : "0" + second;
         return minute + ":" + second;
-    }
-    toProcess(event) {
-        var currentValue = event.offsetX / this.process.nativeElement.offsetWidth;
-        this.player.nativeElement.currentTime = this.player.nativeElement.duration * currentValue;
     }
 }

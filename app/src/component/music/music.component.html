@@ -1,5 +1,4 @@
 <div class="music">
-    <audio id="player" src="{{music_list[play_index].src}}" #player></audio>
     <div id="bz_music" class="bz_music">
         <div class="music_left">
             <div class="music_info">
@@ -14,9 +13,6 @@
                             </a>
                         </li>
                     </ul>
-                </div>
-                <div id="process" class="process" (click)="toProcess($event)" #process>
-                    <span id="process_slide" class="process_slide" style="width: 0%;" #processSlide></span>
                 </div>
             </div>
             <div class="music_controls">
