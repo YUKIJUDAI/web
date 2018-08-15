@@ -10,6 +10,10 @@ a:hover {
 ul li {
     list-style: none;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
 .music_left {
     position: absolute;
     left: 0;
@@ -21,22 +25,99 @@ ul li {
     position: absolute;
     left: 400px;
     top: 0;
-    width: 550px;
+    width: 600px;
     height: 350px;
 }
 .music_bottom {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 950px;
+    width: 1000px;
     height: 300px;
 }
 .music_right {
     position: absolute;
     top: 0;
     right: 0;
-    width: 250px;
-    height: 700px;
+    width: 200px;
+    height: 650px;
+}
+.music_menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    width: 50px;
+    height: 650px;
+    border-radius: 0 10px 10px 0;
+    background: url("../../assets/images/menu_bg.jpeg") no-repeat;
+    background-size: cover;
+}
+.hamburger {
+    margin-left: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.hamburger .line {
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    position: absolute;
+}
+.hamburger .line:nth-child(2) {
+    top: 50%;
+    margin-top: -2px;
+}
+.hamburger .line:nth-child(3) {
+    bottom: 0;
+}
+.menu_search {
+    margin-left: 60px;
+}
+.menu_list ul {
+    height: 500px;
+    overflow-y: scroll;
+    margin-left: 20px;
+}
+.menu_list ul li {
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    color: #cf121b;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    text-indent: 10px;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.input-holder {
+    position: relative;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.5);
+}
+.input-holder .search-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 70px 0 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: 0 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #fff;
 }
 
 .bz_music {
@@ -45,13 +126,25 @@ ul li {
     height: 650px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    background: #222;
     position: relative;
+}
+.bz_music:before {
+    background: url("../../assets/images/music_bg.jpeg") no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    width: 1200px;
+    height: 650px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
 }
 .bz_music .music_info {
     width: 400px;
     height: 150px;
-    background: #000;
     border-radius: 10px 10px 0 0;
     position: relative;
 }
@@ -108,20 +201,10 @@ ul li {
 .music_controls .play_controls [class^="btn_"] {
     padding: 0 30px;
 }
-.music_controls .volume {
-    width: 300px;
-    height: 2px;
-    background: #fff;
-    margin: 10px auto;
-    position: relative;
-    font-size: 20px;
-    cursor: pointer;
-}
 .bz_music .play_list_area {
-    width: 250px;
+    width: 200px;
     height: 650px;
     border-radius: 10px;
-    background: #222;
     position: absolute;
     top: 0;
     right: 0;
@@ -148,6 +231,12 @@ ul li {
 .bz_music .play_list .list_title {
     margin-left: 10px;
     float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 180px;
+    text-align: left;
+    display: block;
 }
 .bz_music .play_list .list_time {
     margin-right: 10px;

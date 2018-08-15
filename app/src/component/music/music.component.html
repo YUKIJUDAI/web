@@ -38,6 +38,27 @@
                 </ul>
             </div>
         </div>
+        <div class="music_menu">
+            <div class="hamburger" style="transform: translate(1.43139e-160px, 295.04px);" (click)="changeTab()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="menu_search">
+                <div class="input-holder">
+                    <input type="text" class="search-input" placeholder="搜索音乐" (keyup)="search($event)" [(ngModel)]="searchContent">
+                </div>
+            </div>
+            <div class="menu_list">
+                <ul>
+                    <li *ngFor="let item of searchList;let i = index">
+                        <div (click)="addPlayMusic(item.id)">
+                            <span>{{item.name}}  {{item.artists[0].name}}</span>
+                        </div>                       
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="music_bottom">
             <canvas id="canvas" width="800" height="250"></canvas>
         </div>
