@@ -3,8 +3,8 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "build": "node ./service.js",
-        "start": "forever start -w ./service.js",
+        "dev": "node ./service.js",
+        "start": "forever start ./service.js",
         "stop": "forever stopall",
         "reset": "forever restartall",
         "list": "forever list"
