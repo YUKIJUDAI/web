@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
+import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { interval, timer } from "rxjs/index";
 
@@ -12,7 +12,7 @@ declare var $: any;
     styleUrls: ["./music.component.css"],
     providers: [Visualizer]
 })
-export class MusicComponent implements AfterViewInit {
+export class MusicComponent implements AfterViewInit,OnDestroy {
     @ViewChild("player")
     player: ElementRef;
 
@@ -20,6 +20,7 @@ export class MusicComponent implements AfterViewInit {
     play_index: number = 0;
     time: string = "00:00";
     flag: boolean = false;
+    first: boolean = true;
     tabflag: boolean = false;
     setInterval: any;
     searchContent: string = "";
@@ -27,10 +28,12 @@ export class MusicComponent implements AfterViewInit {
     constructor(private http: HttpClient, private visualizer: Visualizer) {
         this.http.get(environment.baseApi + "getMusicList").subscribe(res => {
             this.music_list = res;
-            this.playMusic(0);
         });
     }
     ngAfterViewInit() {}
+    ngOnDestroy(){
+        this.visualizer.close();
+    }
     playMusic(i) {
         this.play_index = i;
         this.flag = true;
@@ -43,7 +46,7 @@ export class MusicComponent implements AfterViewInit {
                 this.visualizer.getCurrentTime() >= this.visualizer.getDuration()
             ) {
                 this.setInterval.unsubscribe();
-                this.forward();
+                this.next();
             }
         });
     }
@@ -53,22 +56,29 @@ export class MusicComponent implements AfterViewInit {
             this.visualizer.stop();
         } else {
             this.flag = true;
-            this.visualizer.play(this.visualizer.getCurrentTime());
+            if (this.first) {
+                this.first = !this.first;
+                this.playMusic(0);
+            } else {
+                this.visualizer.play(this.visualizer.getCurrentTime());
+            }
         }
     }
-    backword() {
+    prev() {
         if (this.play_index > 0) {
             this.visualizer.stop();
             this.playMusic(this.play_index - 1);
         } else {
+            this.setInterval.unsubscribe();
             alert("没有上一首了");
         }
     }
-    forward() {
+    next() {
         if (this.play_index < this.music_list.length - 1) {
             this.visualizer.stop();
             this.playMusic(this.play_index + 1);
         } else {
+            this.setInterval.unsubscribe();
             alert("没有下一首了");
         }
     }
@@ -90,7 +100,7 @@ export class MusicComponent implements AfterViewInit {
     search(e) {
         if (e.keyCode == "13") {
             var content = this.searchContent;
-            this.searchContent = '搜索中。。。'
+            this.searchContent = "搜索中。。。";
             this.http.post(environment.baseApi + "searchMusic", { search: content }).subscribe(res => {
                 this.searchContent = content;
                 this.searchList = res["result"]["songs"];

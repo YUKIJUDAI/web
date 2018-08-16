@@ -18,9 +18,9 @@
             <div class="music_controls">
                 <div id="time" class="time">{{time}}</div>
                 <div class="play_controls">
-                    <a id="btnBackward" class="btn_back fa fa-backward" (click)="backword()"></a>
+                    <a id="btnBackward" class="btn_back fa fa-backward" (click)="prev()"></a>
                     <a id="btnPlay" class="btn_play fa" [ngClass]="{'fa-play':flag,'fa-pause':!flag}" (click)="clickBtnPlay()"></a>
-                    <a id="btnForward" class="btn_forward fa fa-forward" (click)="forward()"></a>
+                    <a id="btnForward" class="btn_forward fa fa-forward" (click)="next()"></a>
                 </div>
             </div>
         </div>

@@ -39,6 +39,9 @@ export class Visualizer {
             this.audioContext.suspend();
         }
     }
+    close(){
+        this.audioContext.close();
+    }
     getCurrentTime() {
         return this.audioContext.currentTime;
     }
