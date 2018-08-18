@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { interval, timer } from "rxjs/index";
+import { interval } from "rxjs/index";
 
 import { environment } from "../../environments/environment";
 import { Visualizer } from "./audio_visualizer";
@@ -16,15 +16,15 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
     @ViewChild("player")
     player: ElementRef;
 
-    music_list: any = [{ src: "" }];
-    play_index: number = 0;
-    time: string = "00:00";
-    flag: boolean = false;
-    first: boolean = true;
-    tabflag: boolean = false;
-    setInterval: any;
-    searchContent: string = "";
-    searchList: Array<object>;
+    music_list: any = []; //音乐列表
+    play_index: number = 0; // 当前index
+    time: string = "00:00"; // 当前播放时间
+    flag: boolean = false;  // 当前是否在播放
+    first: boolean = true; // 是否第一次播放
+    tabflag: boolean = false; // 搜索tab是否打开
+    setInterval: any;    // interval observable
+    searchContent: string = ""; // 搜索内容
+    searchList: Array<object>; //搜索列表
     constructor(private http: HttpClient, private visualizer: Visualizer) {
         this.http.get(environment.baseApi + "getMusicList").subscribe(res => {
             this.music_list = res;
@@ -32,8 +32,10 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
     }
     ngAfterViewInit() {}
     ngOnDestroy(){
+        // close播放器对象
         this.visualizer.close();
     }
+    // 播放音乐
     playMusic(i) {
         this.play_index = i;
         this.flag = true;
@@ -50,6 +52,7 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
             }
         });
     }
+    // 按钮播放音乐
     clickBtnPlay() {
         if (this.flag) {
             this.flag = false;
@@ -64,6 +67,7 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
             }
         }
     }
+    // 上一首
     prev() {
         if (this.play_index > 0) {
             this.visualizer.stop();
@@ -73,6 +77,7 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
             alert("没有上一首了");
         }
     }
+    // 下一首
     next() {
         if (this.play_index < this.music_list.length - 1) {
             this.visualizer.stop();
@@ -82,6 +87,7 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
             alert("没有下一首了");
         }
     }
+    // 处理时间
     formateTime(time) {
         var minute: string | number = Math.floor(time / 60);
         var second: string | number = Math.floor(time - 60 * minute);
@@ -89,6 +95,7 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
         second = second >= 10 ? second : "0" + second;
         return minute + ":" + second;
     }
+    // 改变搜索tab状态
     changeTab() {
         this.tabflag = !this.tabflag;
         if (this.tabflag) {
@@ -97,6 +104,7 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
             $(".music_menu").animate({ width: "60px" });
         }
     }
+    // 搜索
     search(e) {
         if (e.keyCode == "13") {
             var content = this.searchContent;
@@ -107,6 +115,7 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
             });
         }
     }
+    // 添加网络音乐并播放
     addPlayMusic(id) {
         this.http.post(environment.baseApi + "playSearchMusic", { id: id }).subscribe(res => {
             this.searchList.forEach((item, i) => {

@@ -8,12 +8,14 @@ export class Visualizer {
     buffer = { duration: 0 };
     allCapsReachBottom = false;
     constructor() {
+        // 创建AudioContext对象
         if (this.audioContext === null) {
             alert("浏览器不支持audioContext");
             return;
         }
         this.audioContext = new AudioContext();
     }
+    // 开始请求数据
     start(url) {
         this.stop();
         this.audioContext = new AudioContext();
@@ -28,17 +30,20 @@ export class Visualizer {
         };
         request.send();
     }
+    // 播放
     play(sTime) {
         this.audioContext.resume();
         this.stop();
         this.visualize(this.audioContext, this.buffer, sTime);
     }
+    // 停止
     stop() {
         if (this.source !== null) {          
             this.source.stop();
             this.audioContext.suspend();
         }
     }
+    // 关闭
     close(){
         this.audioContext.close();
     }

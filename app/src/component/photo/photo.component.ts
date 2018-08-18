@@ -12,6 +12,7 @@ import { environment } from "../../environments/environment";
 export class PhotoComponent {
     picAssets: any;
     constructor(private http: HttpClient) {
+        // http获取照片信息
         this.http.get(environment.baseApi + "getPhotoList").subscribe(res => {
             this.picAssets = res;
             this.picAssets.forEach((item, i) => {
@@ -24,10 +25,9 @@ export class PhotoComponent {
             });
         });
     }
-
+    // 随机生成class
     randomCss(type: string): string | boolean {
         var style: object = {
-            h3: ["box__title--bottom", "box__title--left"],
             h4: ["box__text--bottom", "box__text--topcloser", "box__text--right", "box__text--bottomcloser"],
             h4span: ["box__text-inner--rotated1", "box__text-inner--rotated2", "box__text-inner--rotated3"]
         };

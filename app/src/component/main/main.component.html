@@ -39,18 +39,18 @@
         <div class=" col-md-12  col-sm-12 title">
             <div id="main">
                 <ul>
-                    <ng-container *ngFor="let item of addressArray index as i;">
-                        <li *ngIf="i <= 9" (click)="toUrl(item.name)" (mouseover)="keySound()">{{ item.name }}</li>
+                    <ng-container *ngFor="let item of address index as i;">
+                        <li *ngIf="i <= 9" (click)="toUrl(i)" (mouseover)="keySound()">{{ item.name }}</li>
                     </ng-container>
                 </ul>
                 <ul>
-                    <ng-container *ngFor="let item of addressArray index as i;">
-                        <li *ngIf="i > 9 && i <=18" (click)="toUrl(item.name)" (mouseover)="keySound()">{{ item.name }}</li>
+                    <ng-container *ngFor="let item of address index as i;">
+                        <li *ngIf="i > 9 && i <=18" (click)="toUrl(i)" (mouseover)="keySound()">{{ item.name }}</li>
                     </ng-container>
                 </ul>
                 <ul>
-                    <ng-container *ngFor="let item of addressArray index as i;">
-                        <li *ngIf="i > 18" (click)="toUrl(item.name)" (mouseover)="keySound()">{{ item.name }}</li>
+                    <ng-container *ngFor="let item of address index as i;">
+                        <li *ngIf="i > 18" (click)="toUrl(i)" (mouseover)="keySound()">{{ item.name }}</li>
                     </ng-container>
                 </ul>
             </div>
