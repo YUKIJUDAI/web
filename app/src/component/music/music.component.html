@@ -25,7 +25,17 @@
             </div>
         </div>
         <div class="music_center">
-
+            <div  class="lyric_text">
+                <div style="position:relative;height: 100%;overflow: hidden;">
+                    <ul id="lyric_list" class="lyric_list" [ngStyle]="{'top': - lyric_index*30 + 135 + 'px' }">
+                        <li *ngFor="let item of lyric_list;let i = index">
+                            <div style="height:100%" [ngClass]="{'lyric_index': i == lyric_index}">
+                                <span class="lyric_title">{{ item.content }}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="music_right">
             <div id="play_list_area" class="play_list_area">
@@ -53,8 +63,8 @@
                 <ul>
                     <li *ngFor="let item of searchList;let i = index">
                         <div (click)="addPlayMusic(item.id)">
-                            <span>{{item.name}}  {{item.artists[0].name}}</span>
-                        </div>                       
+                            <span>{{i + 1}}. {{item.name}} {{item.artists[0].name}}</span>
+                        </div>
                     </li>
                 </ul>
             </div>

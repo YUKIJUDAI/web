@@ -84,7 +84,7 @@ router.post("/searchMusic", function(req, res, next) {
         data,
         "",
         music_req => res.json(JSON.parse(music_req)),
-        err => res.status(502).send("fetch error")
+        err => logError.error('请求错误')
     );
 });
 
@@ -104,9 +104,21 @@ router.post("/playSearchMusic", function(req, res, next) {
             res.setHeader("Content-Type", "application/json");
             res.send(music_req);
         },
-        err => {
-            res.status(502).send("fetch error");
-        }
+        err => logError.error("请求错误")
+    );
+});
+
+router.post("/getLyric", function(req, res, next) {
+    createWebAPIRequest(
+        "music.163.com",
+        "/weapi/song/lyric?os=osx&id=" + req.body.id + "&lv=-1&kv=-1&tv=-1",
+        "POST",
+        {},
+        "",
+        music_req => {
+            res.send(music_req);
+        },
+        err => logError.error("请求错误")
     );
 });
 

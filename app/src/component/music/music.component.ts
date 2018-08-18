@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { interval } from "rxjs/index";
+import { interval, forkJoin } from "rxjs/index";
 
 import { environment } from "../../environments/environment";
 import { Visualizer } from "./audio_visualizer";
@@ -12,17 +12,16 @@ declare var $: any;
     styleUrls: ["./music.component.css"],
     providers: [Visualizer]
 })
-export class MusicComponent implements AfterViewInit,OnDestroy {
-    @ViewChild("player")
-    player: ElementRef;
-
-    music_list: any = []; //音乐列表
+export class MusicComponent implements AfterViewInit, OnDestroy {
+    music_list: any = [{ title: "", artist: "" }]; //音乐列表
+    lyric_list: any = []; // 当前歌词list
+    lyric_index: number = 0; // 当前歌词list的index
     play_index: number = 0; // 当前index
     time: string = "00:00"; // 当前播放时间
-    flag: boolean = false;  // 当前是否在播放
+    flag: boolean = false; // 当前是否在播放
     first: boolean = true; // 是否第一次播放
     tabflag: boolean = false; // 搜索tab是否打开
-    setInterval: any;    // interval observable
+    setInterval: any; // interval observable
     searchContent: string = ""; // 搜索内容
     searchList: Array<object>; //搜索列表
     constructor(private http: HttpClient, private visualizer: Visualizer) {
@@ -31,17 +30,24 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
         });
     }
     ngAfterViewInit() {}
-    ngOnDestroy(){
+    ngOnDestroy() {
         // close播放器对象
         this.visualizer.close();
     }
     // 播放音乐
     playMusic(i) {
         this.play_index = i;
-        this.flag = true;
+        this.flag = !this.flag;
+        this.first = false;
+        this.lyric_index = 0;
         this.visualizer.start(this.music_list[i].src);
-        this.setInterval = interval(100).subscribe(() => {
+        this.setInterval = interval(1000).subscribe(() => {
             this.time = this.formateTime(this.visualizer.getCurrentTime());
+            for (let i = this.lyric_index; i < this.lyric_list.length; i++) {
+                if (this.lyric_list[i].time === this.time) {
+                    this.lyric_index = i;
+                }
+            }
             if (
                 this.visualizer.getCurrentTime() > 0 &&
                 this.visualizer.getDuration() > 0 &&
@@ -55,10 +61,10 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
     // 按钮播放音乐
     clickBtnPlay() {
         if (this.flag) {
-            this.flag = false;
+            this.flag = !this.flag;
             this.visualizer.stop();
         } else {
-            this.flag = true;
+            this.flag = !this.flag;
             if (this.first) {
                 this.first = !this.first;
                 this.playMusic(0);
@@ -117,18 +123,35 @@ export class MusicComponent implements AfterViewInit,OnDestroy {
     }
     // 添加网络音乐并播放
     addPlayMusic(id) {
-        this.http.post(environment.baseApi + "playSearchMusic", { id: id }).subscribe(res => {
+        var msg = this.http.post(environment.baseApi + "playSearchMusic", { id });
+        var lyric = this.http.post(environment.baseApi + "getLyric", { id });
+        forkJoin([msg, lyric]).subscribe(res => {
             this.searchList.forEach((item, i) => {
                 if (item["id"] === id) {
+                    const lyricList = changeLyric(res[1]["lrc"].lyric);
+                    this.lyric_list = lyricList;
                     this.music_list.push({
                         artist: item["artists"][0].name,
-                        src: res["data"][0].url,
-                        title: item["name"]
+                        src: res[0]["data"][0].url,
+                        title: item["name"],
+                        lyric: lyricList
                     });
+
                     this.playMusic(this.music_list.length - 1);
                     return;
                 }
             });
+            function changeLyric(lyric): Array<object> {
+                let arr: Array<string> = JSON.stringify(lyric).split("\\n");
+                let lyricList: Array<object> = [];
+                arr.forEach((item, i) => {
+                    lyricList.push({
+                        time: item.substring(item.indexOf("[") + 1, item.indexOf("]")).split(".")[0],
+                        content: item.substring(item.indexOf("]") + 1)
+                    });
+                });
+                return lyricList;
+            }
         });
     }
 }

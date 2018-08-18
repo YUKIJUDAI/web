@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class Visualizer {
@@ -7,7 +8,7 @@ export class Visualizer {
     animationId;
     buffer = { duration: 0 };
     allCapsReachBottom = false;
-    constructor() {
+    constructor(private http: HttpClient) {
         // 创建AudioContext对象
         if (this.audioContext === null) {
             alert("浏览器不支持audioContext");
@@ -17,18 +18,14 @@ export class Visualizer {
     }
     // 开始请求数据
     start(url) {
-        this.stop();
-        this.audioContext = new AudioContext();
-        var request = new XMLHttpRequest();
-        request.open("GET", url, true);
-        request.responseType = "arraybuffer";
-        request.onload = () => {
-            this.audioContext.decodeAudioData(request.response, buffer => {
+        this.close();
+        this.http.get(url, { responseType: "arraybuffer" }).subscribe(res => {
+            this.audioContext = new AudioContext();
+            this.audioContext.decodeAudioData(res, buffer => {
                 this.visualize(this.audioContext, buffer);
                 this.buffer = buffer;
             });
-        };
-        request.send();
+        });
     }
     // 播放
     play(sTime) {
@@ -38,13 +35,13 @@ export class Visualizer {
     }
     // 停止
     stop() {
-        if (this.source !== null) {          
+        if (this.source !== null) {
             this.source.stop();
             this.audioContext.suspend();
         }
     }
     // 关闭
-    close(){
+    close() {
         this.audioContext.close();
     }
     getCurrentTime() {
@@ -53,7 +50,7 @@ export class Visualizer {
     getDuration() {
         return this.buffer.duration;
     }
-    visualize(audioContext, buffer, sTime = 0) {
+    visualize(audioContext, buffer, sTime = this.getCurrentTime()) {
         var audioBufferSouceNode = audioContext.createBufferSource(),
             analyser = audioContext.createAnalyser();
 
@@ -71,7 +68,8 @@ export class Visualizer {
             cancelAnimationFrame(this.animationId);
         }
         this.source = audioBufferSouceNode;
-        this.source.start(0,sTime);
+        console.log(this.getCurrentTime())
+        this.source.start(0, sTime);
         this.drawSpectrum(analyser);
     }
     drawSpectrum(analyser) {

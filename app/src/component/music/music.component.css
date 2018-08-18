@@ -50,8 +50,7 @@ ul li {
     width: 50px;
     height: 650px;
     border-radius: 0 10px 10px 0;
-    background: url("../../assets/images/menu_bg.jpeg") no-repeat;
-    background-size: cover;
+    background-color: #1d1d1d;
 }
 .hamburger {
     margin-left: 20px;
@@ -81,8 +80,8 @@ ul li {
     margin-left: 20px;
 }
 .menu_list ul li {
-    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
-    color: #cf121b;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+    color: #8b8b8b;
     font-size: 12px;
     height: 30px;
     line-height: 30px;
@@ -93,13 +92,17 @@ ul li {
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor: pointer;
+    overflow: hidden;
+}
+.menu_list ul li:hover {
+    background-color: #000;
 }
 .input-holder {
     position: relative;
     width: 200px;
     height: 40px;
     border-radius: 20px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
 }
 .input-holder .search-input {
     width: 100%;
@@ -241,4 +244,23 @@ ul li {
 .bz_music .play_list .list_time {
     margin-right: 10px;
     float: right;
+}
+.lyric_text {
+    position: relative;
+    height: 260px;
+    padding: 40px 10px;
+    color: #f5f5f5;
+    text-align: left;
+    font-family: 微软雅黑;
+    line-height: 30px;
+    opacity: 0.6;
+    overflow: hidden;
+}
+.lyric_list {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.lyric_index {
+    color: #0cc65b;
 }
