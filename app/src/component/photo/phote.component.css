@@ -10,7 +10,6 @@
     min-height: 100vh;
     color: #57585c;
     color: var(--color-text);
-    background-color: #D7ECEF;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
