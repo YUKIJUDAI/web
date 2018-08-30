@@ -19,13 +19,13 @@
                 <div id="time" class="time">{{time}}</div>
                 <div class="play_controls">
                     <a id="btnBackward" class="btn_back fa fa-backward" (click)="prev()"></a>
-                    <a id="btnPlay" class="btn_play fa" [ngClass]="{'fa-play':flag,'fa-pause':!flag}" (click)="clickBtnPlay()"></a>
+                    <a id="btnPlay" class="btn_play fa" [ngClass]="{'fa-play':!flag,'fa-pause':flag}" (click)="clickBtnPlay()"></a>
                     <a id="btnForward" class="btn_forward fa fa-forward" (click)="next()"></a>
                 </div>
             </div>
         </div>
         <div class="music_center">
-            <div  class="lyric_text">
+            <div class="lyric_text">
                 <div style="position:relative;height: 100%;overflow: hidden;">
                     <ul id="lyric_list" class="lyric_list" [ngStyle]="{'top': - lyric_index*30 + 135 + 'px' }">
                         <li *ngFor="let item of lyric_list;let i = index">
@@ -62,7 +62,7 @@
             <div class="menu_list">
                 <ul>
                     <li *ngFor="let item of searchList;let i = index">
-                        <div (click)="addPlayMusic(item.id)">
+                        <div (click)="addPlayMusic(i,item.id)">
                             <span>{{i + 1}}. {{item.name}} {{item.artists[0].name}}</span>
                         </div>
                     </li>

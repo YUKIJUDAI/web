@@ -7,7 +7,7 @@ import { environment } from "../../environments/environment";
 @Component({
     selector: "photo",
     templateUrl: "./photo.component.html",
-    styleUrls: ["./phote.component.css","./cat.css"]
+    styleUrls: ["./phote.component.css"]
 })
 export class PhotoComponent {
     picAssets: any;

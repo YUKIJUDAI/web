@@ -1,38 +1,3 @@
-<section id="home">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <h1 class="wow bounceInDown rotate">Just</h1>
-                <h2 class="wow bounce">My Website</h2>
-                <a href="#nav" class="btn btn-default smoothScroll" style="position:relative;z-index:1000" (click)="toStart">GET START</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- navigation section -->
-<div class="navbar navbar-default navbar-static-top" role="navigation" id="nav">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand">nav</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#home" class="smoothScroll">首页</a>
-                </li>
-                <li>
-                    <a routerLink="photo">相册</a>
-                </li>
-                <li>
-                    <a routerLink="music">音乐</a>
-                </li>
-                <li>
-                    <a href="https://github.com/YUKIJUDAI" target="__block">Github</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
 <!-- intro section -->
 <section id="intro" #intro>
     <div class="row">
@@ -56,16 +21,7 @@
             </div>
         </div>
     </div>
+    <audio src="./assets/sound/key.wav" id="audio"></audio>
 </section>
-<!-- footer section -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=724545855&auto=1&height=90"></iframe>-->
-            </div>
-        </div>
-    </div>
-</footer>
 
-<audio src="./assets/sound/key.wav" id="audio"></audio>
+

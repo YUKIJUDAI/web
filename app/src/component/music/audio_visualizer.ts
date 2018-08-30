@@ -68,7 +68,6 @@ export class Visualizer {
             cancelAnimationFrame(this.animationId);
         }
         this.source = audioBufferSouceNode;
-        console.log(this.getCurrentTime())
         this.source.start(0, sTime);
         this.drawSpectrum(analyser);
     }

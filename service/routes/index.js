@@ -2,7 +2,6 @@ var path = require("path");
 var fs = require("fs");
 var express = require("express");
 var bodyParser = require("body-parser");
-var jsmediatags = require("jsmediatags"); // mp3读取
 
 var db = require("../bin/basicConnection");
 var createWebAPIRequest = require("../util/util");
@@ -48,27 +47,6 @@ router.get("/getPhotoList", function(req, res, next) {
     ]);
 });
 
-router.get("/getMusicList", function(req, res, next) {
-    var p = path.resolve(__dirname, "../views/assets/sound/music/");
-    var data = [];
-    fs.readdir(p, function(err, files) {
-        files.forEach(function(item, i) {
-            jsmediatags.read(p + "/" + item, {
-                onSuccess: function(tag) {
-                    data.push({
-                        title: item.split(".")[0],
-                        artist: tag.tags.artist,
-                        src: "../../assets/sound/music/" + item
-                    });
-                    if (i === files.length - 1) {
-                        res.json(data);
-                    }
-                }
-            });
-        });
-    });
-});
-
 router.post("/searchMusic", function(req, res, next) {
     const data = {
         csrf_token: "",
@@ -84,7 +62,7 @@ router.post("/searchMusic", function(req, res, next) {
         data,
         "",
         music_req => res.json(JSON.parse(music_req)),
-        err => logError.error('请求错误')
+        err => logError.error("请求错误")
     );
 });
 

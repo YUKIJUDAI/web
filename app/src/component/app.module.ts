@@ -6,16 +6,16 @@ import { FormsModule } from "@angular/forms";
 
 import { routes } from "./router/router";
 
-import { AppComponent } from "./app.component";
+import { HomeComponent } from "./home/home.component";
 import { MainComponent } from "./main/main.component";
 import { PhotoComponent } from "./photo/photo.component";
 import { MusicComponent } from "./music/music.component";
 
 @NgModule({
-    declarations: [AppComponent, MainComponent, PhotoComponent, MusicComponent],
+    declarations: [HomeComponent, MainComponent, PhotoComponent, MusicComponent],
     imports: [BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(routes)],
     exports: [RouterModule],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [HomeComponent]
 })
 export class AppModule {}
