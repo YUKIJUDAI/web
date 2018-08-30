@@ -6,10 +6,10 @@
                     <ul>
                         <li class="list_current">
                             <a href="javascript:;">
-                                <span id="list_title" class="list_title">{{music_list[play_index].title}}</span>
+                                <span id="list_title" class="list_title" *ngIf="music_list.length > 0">{{music_list[play_index].title}}</span>
                             </a>
                             <a href="javascript:;">
-                                <span id="list_singer" class="list_singer">{{music_list[play_index].artist}}</span>
+                                <span id="list_singer" class="list_singer" *ngIf="music_list.length > 0">{{music_list[play_index].artist}}</span>
                             </a>
                         </li>
                     </ul>
