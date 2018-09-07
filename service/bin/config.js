@@ -20,13 +20,11 @@ var logConfig = {
         info: {
             type: "dateFile",
             filename: "logs/app-info.log",
-            pattern: ".yyyy-MM-dd",
             category: "console"
         },
         error: {
             type: "dateFile",
-            filename: "logs/app-error.log",
-            pattern: ".yyyy-MM-dd"
+            filename: "logs/app-error.log"
         }
     },
     replaceConsole: true,
