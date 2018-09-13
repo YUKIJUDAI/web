@@ -75,23 +75,13 @@ export class MusicComponent implements AfterViewInit, OnDestroy {
     }
     // 上一首
     prev() {
-        if (this.play_index > 0) {
-            this.visualizer.stop();
-            this.playMusic(this.play_index - 1);
-        } else {
-            this.setInterval.unsubscribe();
-            alert("没有上一首了");
-        }
+        this.visualizer.stop();
+        this.play_index > 0 ? this.playMusic(this.play_index - 1) : this.playMusic(this.music_list.length - 1);
     }
     // 下一首
     next() {
-        if (this.play_index < this.music_list.length - 1) {
-            this.visualizer.stop();
-            this.playMusic(this.play_index + 1);
-        } else {
-            this.setInterval.unsubscribe();
-            alert("没有下一首了");
-        }
+        this.visualizer.stop();
+        this.play_index < this.music_list.length - 1 ? this.playMusic(this.play_index + 1) : this.playMusic(0);
     }
     // 处理时间
     formateTime(time) {

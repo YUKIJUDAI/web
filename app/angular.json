@@ -24,7 +24,6 @@
                             "src/assets/plugs/jquery.js",
                             "src/assets/plugs/jquery.parallax.js",
                             "src/assets/plugs/jquery.sticky.js",
-                            "src/assets/plugs/imagesloaded.pkgd.min.js",
                             "src/assets/plugs/TweenMax.min.js"
                         ]
                     },
