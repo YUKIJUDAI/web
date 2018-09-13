@@ -1,11 +1,11 @@
 @font-face {
-	font-family: 'Proxima';
-	src: url(../fonts/ProximaNova-Regular.otf);
+    font-family: "Proxima";
+    src: url(../fonts/ProximaNova-Regular.otf);
 }
 
 @font-face {
-	font-family: 'Proxima Bold';
-	src: url(../fonts/ProximaNova-Bold.otf);
+    font-family: "Proxima Bold";
+    src: url(../fonts/ProximaNova-Bold.otf);
 }
 
 h1,
@@ -14,41 +14,50 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: "Proxima Bold";
-	font-weight: bold;
+    font-family: "Proxima Bold";
+    font-weight: bold;
 }
 
 p {
-	letter-spacing: 1px;
-	line-height: 28px;
+    letter-spacing: 1px;
+    line-height: 28px;
 }
 
 hr {
-	border-color: #e0e0e0;
-	margin: 0 auto 20px auto;
-	width: 100px !important;
+    border-color: #e0e0e0;
+    margin: 0 auto 20px auto;
+    width: 100px !important;
+}
+
+a {
+    text-decoration: none;
 }
 
 h1 {
-	font-size: 60px;
+    font-size: 60px;
+    margin: 0.67em 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 h2 {
-	font-size: 48px;
+    font-size: 48px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 h3 {
-	font-size: 30px;
+    font-size: 30px;
 }
 
 h4 {
-	font-size: 24px;
+    font-size: 24px;
 }
 
 h5 {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 h6 {
-	font-size: 16px;
+    font-size: 16px;
 }
