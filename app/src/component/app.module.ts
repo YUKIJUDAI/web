@@ -10,9 +10,10 @@ import { HomeComponent } from "./home/home.component";
 import { MainComponent } from "./main/main.component";
 import { PhotoComponent } from "./photo/photo.component";
 import { MusicComponent } from "./music/music.component";
+import { GameComponent } from "./game/game.component";
 
 @NgModule({
-    declarations: [HomeComponent, MainComponent, PhotoComponent, MusicComponent],
+    declarations: [HomeComponent, MainComponent, PhotoComponent, MusicComponent, GameComponent],
     imports: [BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(routes)],
     exports: [RouterModule],
     providers: [],
