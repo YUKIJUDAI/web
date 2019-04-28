@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
     providedIn: "root"
 })
 export class CanvasParticle {
-    canvasInit(canvasConfig = {}) {
+    canvasInit() {
         let _this = this;
         let myApp = document.getElementsByTagName("app-root")[0];
         let canvasObj = document.createElement("canvas");
@@ -13,15 +13,15 @@ export class CanvasParticle {
             points: [],
             // 默认配置
             config: {
-                vx: canvasConfig.vx || 4,
-                vy: canvasConfig.vy || 4,
-                height: canvasConfig.height || 2,
-                width: canvasConfig.width || 2,
-                count: canvasConfig.count || 100,
-                color: canvasConfig.color || "138,43,226",
-                stroke: canvasConfig.stroke || "130,255,255",
-                dist: canvasConfig.dist || 6000,
-                e_dist: canvasConfig.e_dist || 20000,
+                vx: 4,
+                vy: 4,
+                height: 2,
+                width: 2,
+                count: 100,
+                color: "138,43,226",
+                stroke: "130,255,255",
+                dist: 6000,
+                e_dist: 20000,
                 max_conn: 10
             },
             context: null
@@ -37,16 +37,6 @@ export class CanvasParticle {
         window.onresize = function() {
             _this.canvasSize(canvas.element);
         };
-        // body.onmousemove = function (e) {
-        // 	let event = e || window.event;
-        // 	canvas.mouse = {
-        // 		x: event.clientX,
-        // 		y: event.clientY
-        // 	}
-        // }
-        // document.onmouseleave = function () {
-        // 	canvas.mouse = undefined;
-        // }
         setInterval(function() {
             _this.drawPoint(canvas);
         }, 40);

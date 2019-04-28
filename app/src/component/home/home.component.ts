@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     intro: ElementRef;
     constructor(canvasParticle: CanvasParticle) {
         // canvas背景
-        canvasParticle.canvasInit({});
+        canvasParticle.canvasInit();
     }
     ngOnInit() {
         // 视觉差插件
