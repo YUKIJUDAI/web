@@ -7,17 +7,18 @@ import { CanvasParticle } from "./canvas-particle";
 declare var $: any;
 @Component({
     selector: "app-root",
+    providers: [CanvasParticle],
     templateUrl: "./home.component.html",
     styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
     @ViewChild("intro")
     intro: ElementRef;
-    constructor() {
+    constructor(canvasParticle: CanvasParticle) {
+        // canvas背景
+        canvasParticle.canvasInit({});
     }
     ngOnInit() {
-        // canvas背景
-        new CanvasParticle();
         // 视觉差插件
         $("#home").parallax("100%", 0.3);
         // 固定nav插件
@@ -31,4 +32,3 @@ export class HomeComponent implements OnInit {
         smoothScroll(this.intro.nativeElement);
     }
 }
-

@@ -1,9 +1,10 @@
+import { Injectable } from "@angular/core";
+
+@Injectable({
+    providedIn: "root"
+})
 export class CanvasParticle {
-    constructor() {
-        this.canvasInit({});
-    }
-    canvasInit(canvasConfig) {
-        canvasConfig = canvasConfig || {};
+    canvasInit(canvasConfig = {}) {
         let _this = this;
         let myApp = document.getElementsByTagName("app-root")[0];
         let canvasObj = document.createElement("canvas");
