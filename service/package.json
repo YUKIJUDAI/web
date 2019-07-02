@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "dev": "node ./service.js",
+        "dev": "nodemon ./service.js",
         "start": "forever start ./service.js",
         "stop": "forever stopall",
         "reset": "forever restartall",
@@ -20,6 +20,7 @@
         "log4js": "^3.0.4",
         "morgan": "~1.9.0",
         "mysql": "^2.16.0",
+        "nodemon": "^1.19.1",
         "request": "^2.88.0",
         "rxjs": "^6.2.2",
         "rxjs-compat": "^6.2.2",

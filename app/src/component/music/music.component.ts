@@ -45,11 +45,7 @@ export class MusicComponent implements AfterViewInit, OnDestroy {
                     this.lyric_index = i;
                 }
             }
-            if (
-                this.visualizer.getCurrentTime() > 0 &&
-                this.visualizer.getDuration() > 0 &&
-                this.visualizer.getCurrentTime() >= this.visualizer.getDuration()
-            ) {
+            if (this.visualizer.getCurrentTime() > 0 && this.visualizer.getDuration() > 0 && this.visualizer.getCurrentTime() >= this.visualizer.getDuration()) {
                 this.setInterval.unsubscribe();
                 this.next();
             }

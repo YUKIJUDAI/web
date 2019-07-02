@@ -61,7 +61,9 @@ router.post("/searchMusic", function(req, res, next) {
         "POST",
         data,
         "",
-        music_req => res.json(JSON.parse(music_req)),
+        music_req => {
+            res.json(JSON.parse(music_req))
+        },
         err => logError.error("请求错误")
     );
 });
@@ -89,11 +91,12 @@ router.post("/playSearchMusic", function(req, res, next) {
 router.post("/getLyric", function(req, res, next) {
     createWebAPIRequest(
         "music.163.com",
-        "/weapi/song/lyric?os=osx&id=" + req.body.id + "&lv=-1&kv=-1&tv=-1",
+        "/weapi/song/lyric?id=" + req.body.id,
         "POST",
         {},
         "",
         music_req => {
+            console.log(music_req)
             res.send(music_req);
         },
         err => logError.error("请求错误")
