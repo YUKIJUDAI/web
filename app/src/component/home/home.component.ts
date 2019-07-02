@@ -12,7 +12,7 @@ declare var $: any;
     styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-    @ViewChild("intro")
+    @ViewChild("intro", { static: false })
     intro: ElementRef;
     constructor(canvasParticle: CanvasParticle) {
         // canvas背景

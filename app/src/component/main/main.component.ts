@@ -9,7 +9,7 @@ import { WebData } from "./webData";
     providers: [WebData]
 })
 export class MainComponent implements OnInit {
-    @ViewChild("intro")
+    @ViewChild("intro", { static: true })
     intro: ElementRef;
     // 网站列表
     address: Array<object> = [];
