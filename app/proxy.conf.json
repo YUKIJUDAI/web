@@ -1,0 +1,18 @@
+{
+  "/getPhotoList": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+  "/searchMusic": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+  "/playSearchMusic": {
+    "target": "http://localhost:3000",
+    "secure": false
+  },
+  "/getLyric": {
+    "target": "http://localhost:3000",
+    "secure": false
+  }
+}

@@ -27,6 +27,6 @@ app.get("/*", function(req, res, next) {
     res.sendFile(path.join(__dirname, "/views/index.html"));
 });
 
-var server = app.listen(80, function(err) {
+var server = app.listen(3000, function(err) {
     debug("Express server listening on port " + server.address().port);
 });
